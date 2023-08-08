@@ -1,0 +1,53 @@
+[
+    {
+      "content": "Great tutorial! Learned a lot.",
+      "created_by": 1,
+      "blog_post_id": 1
+    },
+    {
+      "content": "Looking forward to more tutorials.",
+      "created_by": 2,
+      "blog_post_id": 1
+    },
+    {
+      "content": "Nice explanation of RESTful concepts.",
+      "created_by": 1,
+      "blog_post_id": 2
+    },
+    {
+      "content": "Thanks for sharing this information.",
+      "created_by": 3,
+      "blog_post_id": 2
+    },
+    {
+      "content": "I found this very helpful, thanks!",
+      "created_by": 4,
+      "blog_post_id": 2
+    },
+    {
+      "content": "Looking forward to your next post.",
+      "created_by": 5,
+      "blog_post_id": 3
+    },
+    {
+      "content": "I appreciate your effort in explaining this.",
+      "created_by": 1,
+      "blog_post_id": 3
+    },
+    {
+      "content": "Node.js is amazing for backend development.",
+      "created_by": 2,
+      "blog_post_id": 4
+    },
+    {
+      "content": "This post cleared up some of my doubts.",
+      "created_by": 3,
+      "blog_post_id": 4
+    },
+    {
+      "content": "Do you have any recommendations for learning more?",
+      "created_by": 4,
+      "blog_post_id": 4
+    }
+]
+  
