@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const { sequelize } = require('../models');
+const sequelize = require('../config/connection');
 const { User, BlogPost, Comment } = require('../models');
-const usersSeedData = require('./users.json');
-const blogPostsSeedData = require('./blogposts.json');
-const commentsSeedData = require('./comments.json');
+const usersSeedData = require('./userData.json');
+const blogPostsSeedData = require('./blogPostData.json');
+const commentsSeedData = require('./commentData.json');
 
 (async () => {
   try {
