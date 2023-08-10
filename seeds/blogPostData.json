@@ -2,27 +2,27 @@
     {
       "title": "Introduction to Sequelize",
       "body": "Sequelize is a promise-based Node.js ORM...",
-      "creator_id": 1
+      "created_by": 1
     },
     {
       "title": "Building a RESTful API with Express",
       "body": "In this tutorial, we'll learn how to create a RESTful API...",
-      "creator_id": 2
+      "created_by": 2
     },
     {
       "title": "Working with React Hooks",
       "body": "React Hooks provide a way to use state and other React features...",
-      "creator_id": 3
+      "created_by": 3
     },
     {
       "title": "Getting Started with Node.js",
       "body": "Node.js is a JavaScript runtime that allows you to build...",
-      "creator_id": 4
+      "created_by": 4
     },
     {
       "title": "Web Development Best Practices",
       "body": "Learn about best practices in web development...",
-      "creator_id": 5
+      "created_by": 5
     }
   ]
   
