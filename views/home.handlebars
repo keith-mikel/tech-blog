@@ -1,0 +1,23 @@
+<h1 class="display-4">Welcome to the Tech Blog</h1>
+<a href="/dash">Dashboard</a>
+{{#if loggedIn}}
+{{#each blogPosts}}
+    <div class="card my-4">
+        <div class="card-body">
+            <h2 class="card-title">{{title}}</h2>
+            <p class="card-text">{{body}}</p>
+            <p class="card-subtitle mb-2 text-muted">Created On: {{created_on}}  Created By: {{created_by}}</p>
+            <h3>Comments:</h3>
+            <ul class="list-group">
+                {{#each comments}}
+                    <li class="list-group-item">{{content}} <span class="small">- Created by: {{created_by}}</span></li>
+                    <li class="list-group-item small">Created on: {{created_on}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+{{/each}}
+{{else}}
+<a href="/login">You must login first to view this page</a>
+{{/if}}
+

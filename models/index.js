@@ -9,7 +9,7 @@ User.hasMany(BlogPost, {
 });
 
 BlogPost.belongsTo(User, {
-  foreignKey: 'creator_id',
+  foreignKey: 'created_by',
 });
 
 User.hasMany(Comment, {
@@ -20,6 +20,13 @@ User.hasMany(Comment, {
 Comment.belongsTo(User, {
   foreignKey: 'created_by',
 });
+
+BlogPost.hasMany(Comment, {
+  foreignKey: 'blog_post_id',
+  onDelete: 'CASCADE',
+}
+
+)
 Comment.belongsTo(BlogPost, {
   foreignKey: 'blog_post_id',
 });
