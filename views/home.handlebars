@@ -1,5 +1,5 @@
 <h1 class="display-4">Welcome to the Tech Blog</h1>
-<a href="/dash">Dashboard</a>
+<a href="/dashboard">Dashboard</a>
 {{#if loggedIn}}
 {{#each blogPosts}}
     <div class="card my-4">
@@ -17,7 +17,10 @@
         </div>
     </div>
 {{/each}}
+<button id="logout" class="btn btn-danger">Logout</button>
 {{else}}
 <a href="/login">You must login first to view this page</a>
 {{/if}}
+<script src="./js/login.js"></script>
+<script src="./js/logout.js"></script>
 

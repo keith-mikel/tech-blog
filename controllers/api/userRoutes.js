@@ -3,23 +3,27 @@ const router = express.Router();
 const User = require('../../models/User');
 
 
-// Create a new user
+// CREATE new user
 router.post('/', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const newUser = await User.create({ name, email, password });
+    const dbUserData = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.userId = dbUserData.id; 
 
       res.status(200).json(dbUserData);
     });
-    res.status(201).json(newUser);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
+
 
 // Login
 router.post('/login', async (req, res) => {
@@ -48,10 +52,12 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.userId = dbUserData.id; 
       console.log(
         'File: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
         req.session.cookie,
-        req.session.loggedIn
+        req.session.loggedIn,
+        req.session.userId,
       );
 
       res
