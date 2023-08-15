@@ -9,9 +9,6 @@
                 <h2 class="card-title">{{blogPost.title}}</h2>
                 <p class="card-text">{{blogPost.body}}</p>
                 <p class="card-subtitle mb-2 text-muted">Created On: {{blogPost.created_on}}</p>
-                <h3>Comments:</h3>
-                <ul class="list-group">
-                </ul>
                 <h3>Add a Comment:</h3>
                 <form action="/api/comments" method="POST">
                     <input type="hidden" name="blog_post_id" value="{{blogPost.id}}">
@@ -25,7 +22,7 @@
             </div>
             </div>
             {{else}}
-            <a href="/login">You must login first to create a new post</a>
+            <a href="/login" class="btn btn-warning">You must log in to add a comment</a>
             {{/if}}
         </div>
     </div>

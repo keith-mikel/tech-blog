@@ -44,21 +44,22 @@ router.put('/:id', async (req, res) => {
     const postId = req.params.id;
     const { title, body } = req.body;
 
-    const [rowsUpdated, [updatedPost]] = await BlogPost.update(
+    const rowsUpdated = await BlogPost.update(
       { title, body },
-      { where: { id: postId }, returning: true }
+      { where: { id: postId } }
     );
 
-    if (rowsUpdated === 0) {
+    if (rowsUpdated[0] === 0) {
       res.status(404).json({ message: 'Blog Post not found' });
     } else {
-      res.status(200).json(updatedPost);
+      res.status(200).json({ message: 'Blog Post updated successfully' });
     }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });
   }
 });
+
 
 // Delete a blog post by ID
 router.delete('/:id', async (req, res) => {
