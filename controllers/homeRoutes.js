@@ -6,8 +6,8 @@ router.get('/', async (req, res) => {
     try {
         const blogPostsData = await BlogPost.findAll({
             include: [
-                { model: Comment, include: [{ model: User, as: 'user' }]},
-                { model: User, as: 'user' } // Include the User model and alias it as 'user'
+                { model: Comment, include: [{ model: User, as: 'User' }]},
+                { model: User, as: 'User' } // Include the User model and alias it as 'user'
             ],
         });
 
