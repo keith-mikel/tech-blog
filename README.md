@@ -55,7 +55,7 @@ To Use the Tech Blog locally, use the github link to clone the repo down to your
  https://github.com/keith-mikel/tech-blog
 
 ## Link to App
-https://stormy-shelf-10792-6e9ae3be0984.herokuapp.com/
+https://lit-lake-04791-83df15b980e5.herokuapp.com/
 
 <a name="contact"></a>
 ## Contact Information 
