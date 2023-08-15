@@ -1,6 +1,6 @@
 const User = require('./user');
-const BlogPost = require('./blogpost');
-const Comment = require('./comment');
+const BlogPost = require('./BlogPost');
+const Comment = require('./Comment');
 
 // Define associations
 User.hasMany(BlogPost, {
