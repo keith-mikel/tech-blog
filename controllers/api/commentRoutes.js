@@ -8,8 +8,8 @@ const { Comment } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     const { content } = req.body;
-    const userId = req.session.userId; // Assuming you have the user's ID in the session
-    const blogPostId = req.body.blog_post_id; // Assuming you passed this in the form
+    const userId = req.session.userId; 
+    const blogPostId = req.body.blog_post_id; 
 
     await Comment.create({
       content,

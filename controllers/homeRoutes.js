@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { BlogPost, Comment, User } = require('../models');
 
+//homepage
 router.get('/', async (req, res) => {
     try {
         const blogPostsData = await BlogPost.findAll({
@@ -24,7 +25,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-
+//dashboard
 router.get('/dashboard', async (req, res) => {
     try {
         if (!req.session.loggedIn) {
@@ -45,27 +46,8 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
-// Assuming your router for the edit page is set up in a file like edit-routes.js
-router.get('/edit/:id', async (req, res) => {
-    try {
-        if (!req.session.loggedIn) {
-            return res.redirect('/login'); // Redirect to login if not logged in
-        }
 
-        const postId = req.params.id;
-        const post = await BlogPost.findByPk(postId);
-
-        if (!post) {
-            return res.status(404).json({ message: 'Post not found' });
-        }
-
-        res.render('edit', { post, loggedIn: req.session.loggedIn });
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
+//new post
 router.get('/new', (req, res) => {
     // Check if user is logged in, otherwise redirect to login
     if (!req.session.loggedIn) {
@@ -98,7 +80,7 @@ router.get('/post/:id', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
+//update post
 router.get('/update/:id', async (req, res) => {
     try {
         const postId = req.params.id;

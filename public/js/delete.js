@@ -1,3 +1,4 @@
+//delete post
 document.addEventListener('DOMContentLoaded', () => {
     const deleteButtons = document.querySelectorAll('.delete-post');
 

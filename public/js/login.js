@@ -1,3 +1,5 @@
+
+//user login logic
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -18,7 +20,7 @@ const loginFormHandler = async (event) => {
     }
   }
 };
-
+//new user logic
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
