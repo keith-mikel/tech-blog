@@ -5,15 +5,25 @@ const { BlogPost, Comment, User } = require('../models');
 router.get('/', async (req, res) => {
     try {
         const blogPostsData = await BlogPost.findAll({
-            include: [{ model: Comment},{model: User}],
+            include: [
+                { model: Comment, include: [{ model: User, as: 'user' }]},
+                { model: User, as: 'user' } // Include the User model and alias it as 'user'
+            ],
         });
-        const blogPosts = blogPostsData.map((blogPost) => blogPost.get({plain: true}));
-        res.render('home', { blogPosts, loggedIn: req.session.loggedIn  });
+
+        const blogPosts = blogPostsData.map((blogPost) => {
+            const plainBlogPost = blogPost.get({ plain: true });
+
+            return plainBlogPost;
+        });
+
+        res.render('home', { blogPosts, loggedIn: req.session.loggedIn });
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).send('Internal Server Error');
     }
 });
+
 
 router.get('/dashboard', async (req, res) => {
     try {
