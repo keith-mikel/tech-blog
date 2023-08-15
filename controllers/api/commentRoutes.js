@@ -8,13 +8,23 @@ const Comment = require('../../models/Comment');
 router.post('/', async (req, res) => {
   try {
     const { content } = req.body;
-    const newComment = await Comment.create({ content });
-    res.status(201).json(newComment);
+    const userId = req.session.userId; // Assuming you have the user's ID in the session
+    const blogPostId = req.body.blog_post_id; // Assuming you passed this in the form
+
+    await Comment.create({
+      content,
+      created_by: userId, // Assign the user's ID as the created_by value
+      blog_post_id: blogPostId, // Assign the blog post ID
+    });
+
+    // Redirect to the homepage
+    res.redirect('/');
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });
   }
 });
+
 
 // Get all comments
 router.get('/', async (req, res) => {

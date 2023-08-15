@@ -36,22 +36,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get a single blog post by ID
-router.get('/:id', async (req, res) => {
-  try {
-    const postId = req.params.id;
-    const blogPost = await BlogPost.findByPk(postId);
-    
-    if (!blogPost) {
-      res.status(404).json({ message: 'Blog Post not found' });
-    } else {
-      res.status(200).json(blogPost);
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
-  }
-});
+
 
 // Update a blog post by ID
 router.put('/:id', async (req, res) => {

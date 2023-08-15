@@ -13,6 +13,7 @@ const hbs = exphbs.create({});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+hbs.handlebars.options = { allowProtoPropertiesByDefault: true };
 
 // Set up sessions with cookies
 const sess = {

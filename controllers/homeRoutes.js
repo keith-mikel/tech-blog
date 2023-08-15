@@ -65,6 +65,30 @@ router.get('/new', (req, res) => {
     res.render('new-post', {loggedIn: req.session.loggedIn}); // Assuming you have a template named new-post.ejs
 });
 
+router.get('/post/:id', async (req, res) => {
+    try {
+        const postId = req.params.id;
+
+        const blogPostData = await BlogPost.findByPk(postId, {
+            include: [
+                { model: Comment },
+                { model: User }
+            ],
+        });
+
+        if (!blogPostData) {
+            return res.status(404).send('Blog post not found');
+        }
+
+        const blogPost = blogPostData.get({ plain: true });
+
+        res.render('post', { blogPost, loggedIn: req.session.loggedIn });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 
 // Login route
