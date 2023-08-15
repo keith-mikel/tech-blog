@@ -56,6 +56,16 @@ router.get('/edit/:id', async (req, res) => {
     }
 });
 
+router.get('/new', (req, res) => {
+    // Check if user is logged in, otherwise redirect to login
+    if (!req.session.loggedIn) {
+        return res.redirect('/login');
+    }
+
+    res.render('new-post', {loggedIn: req.session.loggedIn}); // Assuming you have a template named new-post.ejs
+});
+
+
 
 // Login route
 router.get('/login', (req, res) => {

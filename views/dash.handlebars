@@ -1,20 +1,26 @@
-<h1 class="display-4">Your Posts</h1>
-<a href="/">Home</a>
-{{#if loggedIn}}
-<button class="btn btn-primary delete-post">Create A New Post</button>
-{{#each blogPosts}}
-    <div class="card my-4">
-        <div class="card-body">
-            <h2 class="card-title">{{title}}</h2>
-            <p class="card-text">{{body}}</p>
-            <p class="card-subtitle mb-2 text-muted">Created On: {{created_on}}</p>
-            </ul>
-             <button class="btn btn-danger delete-post" data-post-id="{{id}}">Delete</button>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4">Your Posts</h1>
+            <a href="/" class="btn btn-secondary mb-3">Home</a>
+            {{#if loggedIn}}
+            <a href="/new" class="btn btn-primary mb-3">Create A New Post</a>
+            {{/if}}
+            {{#each blogPosts}}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{title}}</h2>
+                    <p class="card-text">{{body}}</p>
+                    <p class="card-subtitle mb-2 text-muted">Created On: {{created_on}}</p>
+                    <button class="btn btn-danger delete-post" data-post-id="{{id}}">Delete</button>
+                </div>
+            </div>
+            {{else}}
+            <p>No posts available.</p>
+            {{/each}}
         </div>
     </div>
-{{/each}}
-{{else}}
-<a href="/login">You must login first to view this page</a>
-{{/if}}
+</div>
 <script src="./js/delete.js"></script>
-<script src="./js/update.js"></script>
+
+

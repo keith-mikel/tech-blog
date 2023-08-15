@@ -6,14 +6,24 @@ const BlogPost = require('../../models/BlogPost');
 // Create a new blog post
 router.post('/', async (req, res) => {
   try {
+    if (!req.session.loggedIn) {
+      return res.status(403).json({ message: 'You must be logged in to create a post' });
+    }
+
     const { title, body } = req.body;
-    const newPost = await BlogPost.create({ title, body });
-    res.status(201).json(newPost);
+    const newPost = await BlogPost.create({
+      title,
+      body,
+      created_by: req.session.userId, // Set the created_by to the logged-in user's userId
+    });
+
+    res.redirect('/dashboard');
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });
   }
 });
+
 
 // Get all blog posts
 router.get('/', async (req, res) => {

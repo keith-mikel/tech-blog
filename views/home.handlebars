@@ -1,26 +1,35 @@
-<h1 class="display-4">Welcome to the Tech Blog</h1>
-<a href="/dashboard">Dashboard</a>
-{{#if loggedIn}}
-{{#each blogPosts}}
-    <div class="card my-4">
-        <div class="card-body">
-            <h2 class="card-title">{{title}}</h2>
-            <p class="card-text">{{body}}</p>
-            <p class="card-subtitle mb-2 text-muted">Created On: {{created_on}}  Created By: {{created_by}}</p>
-            <h3>Comments:</h3>
-            <ul class="list-group">
-                {{#each comments}}
-                    <li class="list-group-item">{{content}} <span class="small">- Created by: {{created_by}}</span></li>
-                    <li class="list-group-item small">Created on: {{created_on}}</li>
-                {{/each}}
-            </ul>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4">Welcome to the Tech Blog</h1>
+            {{#if loggedIn}}
+            <a href="/dashboard" class="btn btn-primary mb-3">Dashboard</a>
+            {{else}}
+            <a href="/login" class="btn btn-warning">You must log in to view Your Dashboard</a>
+            {{/if}}
+            {{#each blogPosts}}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{title}}</h2>
+                    <p class="card-text">{{body}}</p>
+                    <p class="card-subtitle mb-2 text-muted">Created On: {{created_on}}</p>
+                    <h3>Comments:</h3>
+                    <ul class="list-group">
+                        {{#each comments}}
+                        <li class="list-group-item">{{content}}</li>
+                        <li class="list-group-item small">Created on: {{created_on}} <span class="small">- Created by: {{created_by}}</span></li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            {{/each}}
+            {{#if loggedIn}}
+            <button id="logout" class="btn btn-danger">Logout</button>
+            {{/if}}
         </div>
     </div>
-{{/each}}
-<button id="logout" class="btn btn-danger">Logout</button>
-{{else}}
-<a href="/login">You must login first to view this page</a>
-{{/if}}
+</div>
 <script src="./js/login.js"></script>
 <script src="./js/logout.js"></script>
+
 
